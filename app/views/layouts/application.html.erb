@@ -13,21 +13,35 @@
     <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Git'erDun</a>
+      <a class="navbar-brand" href="/">GitErDun</a>
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="#">Home</a></li>
       <li><a href="/projects">Projects</a></li>
-      <li><a href="#">Tasks</a></li>
-      <li><a href="#">Categories</a></li>
-      <li><a href="#">Profile</a></li>
+      <li><a href="/tasks">Tasks</a></li>
+      <li><a href="/categories">Categories</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <% if logged_in? %>
+          <%= link_to current_user.first_name, current_user %>
+        <% else %>
+          <%= link_to "Sign Up", signup_path %>
+        <% end %>
+      </li>
+      <li>
+        <% if logged_in? %>
+          <%= link_to "Log Out", logout_path, method: :post %>
+        <% else %>
+          <%= link_to "Log In", login_path %>
+        <% end %>
+      </li>
     </ul>
   </div>
 </nav>
 
     <div class="container">
       <div class="jumbotron">
-        <%= render 'layouts/header' %>
         <%= yield %>
       </div>
     </div>
