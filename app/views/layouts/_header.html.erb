@@ -1,0 +1,6 @@
+<% if logged_in? %>
+Welcome, <%= current_user.first_name %>! Let's Git'Er Dun!
+<%=link_to "Log Out", logout_path %>
+  <% else %>
+<%= link_to "Log In", login_path %>
+  <% end %>
