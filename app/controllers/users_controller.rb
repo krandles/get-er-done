@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create, :show, :update, :edit]
+  # skip_before_action :login_required, only: [:new, :create]
   before_action :user_params, only: [:create, :update]
 
   def show
@@ -16,6 +16,7 @@ class UsersController < ApplicationController
       @user.level = 1
       @user.experience = 0
       @user.save
+      session[:user_id] = @user.id
       redirect_to @user
     else
       flash[:errors] = @user.errors.full_messages
