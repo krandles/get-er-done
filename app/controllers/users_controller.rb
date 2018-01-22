@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :login_required, only: [:new, :create, :show]
+  skip_before_action :login_required, only: [:new, :create, :show, :update, :edit]
   before_action :user_params, only: [:create, :update]
   def show
     @user = User.find(params[:id])
@@ -27,7 +27,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user
+    @user = User.find(params[:id])
+    @user.assign_attributes(user_params)
+    if @user.valid?
+      @user.save
+      redirect_to @user
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :edit
+    end
   end
 
   def destroy
