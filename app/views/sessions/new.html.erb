@@ -1,9 +1,9 @@
-<%= form_for url: login_path, method: :post do |f| %>
-  <%= f.label :user_name %>
-  <%= f.text_field :user_name %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
+<%= form_tag login_path do %>
+  <%= label_tag :user_name %>
+  <%= text_field_tag :user_name %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password %>
+  <%= submit_tag "Log in" %>
 <% end %>
 New user? <%= link_to "Create an account", new_user_path %>
 <%= params.inspect %>

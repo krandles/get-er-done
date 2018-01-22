@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_action :login_required, only: [:index, :new, :create, :show, :update, :edit]
+  # skip_before_action :login_required, only: [:index, :new, :create, :show, :update, :edit]
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
