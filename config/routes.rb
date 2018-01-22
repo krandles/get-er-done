@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#show'
+  root 'sessions#new'
   resources :categories
   resources :tasks
   resources :projects

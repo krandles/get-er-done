@@ -6,12 +6,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(user_name: params[:user_name])
-    if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      redirect_to user_path(@user), :notice => "Welcome back, #{user.name}"
+    @user = User.find_by(user_name: params[:user][:user_name])
+    # byebug
+    if @user && @user.authenticate(params[:user][:password])
+      session[:user_id] = @user.id
+      redirect_to user_path(@user), :notice => "Welcome back, #{@user.first_name}"
     else
       flash.now.alert = "Invalid username or password"
+      @user = User.new
       render :new
     end
   end
