@@ -1,6 +1,8 @@
-<h1>List of Projects</h1>
+<h2>List of Projects</h2>
 <ul>
   <% @projects.each do |project| %>
     <li><%= link_to project.name, project %></li>
   <% end %>
 </ul>
+<br>
+<%= button_to "Add Project", new_project_path, method: :get %>
