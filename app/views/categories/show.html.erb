@@ -2,7 +2,9 @@
 <h3>List of Tasks in this Category</h3>
 <ul>
   <% @category.tasks.each do |task| %>
+    <% if current_user.tasks.include?(task) %>
     <li><%= link_to task.name, task %></li>
+    <% end %>
   <% end %>
 </ul>
 <br>

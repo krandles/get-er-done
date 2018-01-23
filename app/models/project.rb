@@ -4,6 +4,6 @@ class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
   accepts_nested_attributes_for :tasks
   validates :name, presence:true
-  validates :name, uniqueness:true
+  # validates :name, uniqueness: {scope: :user}
   validates :points, numericality:{greater_than:0}
 end
