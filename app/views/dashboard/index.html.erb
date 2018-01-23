@@ -1,0 +1,27 @@
+<h3>Urgent Tasks</h3>
+<div class="row">
+  <div class="col-sm-4">
+    <h4>Overdue Tasks</h4>
+    <% @tasks.each do |task| %>
+      <% if task.due_date < Date.today %>
+        <%= link_to task.name, task %><br>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h4>Due Today</h4>
+    <% @tasks.each do |task| %>
+      <% if task.due_date == Date.today %>
+        <%= link_to task.name, task %><br>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h4>Due Tomorrow</h4>
+    <% @tasks.each do |task| %>
+      <% if task.due_date == Date.tomorrow %>
+        <%= link_to task.name, task %><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>

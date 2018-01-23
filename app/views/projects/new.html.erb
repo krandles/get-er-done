@@ -13,8 +13,15 @@
     <%= task.number_field :priority, in:1..5 %>
     <%= task.label :due_date %>
     <%= task.date_select :due_date %>
-    <%= task.label :category_id, "Category" %>
-    <%= task.collection_select :category_id, @categories, :id, :name %><br>
+    <%= task.fields_for :category do |c| %>
+      <%= c.label :name, "Category" %>
+      <%= c.text_field :name, list: "categories_autocomplete" %><br>
+      <datalist id="categories_autocomplete">
+        <% Category.all.each do |category| %>
+          <option value="<%= category.name %>">
+        <% end %>
+      </datalist>
+    <% end %>
   <% end %>
 
   <%= f.submit %>

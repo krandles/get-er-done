@@ -11,17 +11,24 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.tasks.build()
+    t = @project.tasks.build
+    t.build_category(name: "")
+    t = @project.tasks.build
+    t.build_category(name: "")
+    t = @project.tasks.build
+    t.build_category(name: "")
     @categories = Category.all
   end
 
   def create
     @project = Project.new(project_params)
-    @project.tasks.each do |t|
+    @project.tasks.each_with_index do |t, index|
       t.user = current_user
+      t.category = Category.find_or_create_by(name: params[:project][:tasks_attributes]["#{index}"][:category_attributes][:name])
     end
     if @project.valid?
       @project.status = false
+      current_user.projects << @project
       @project.save
       redirect_to @project
     else
@@ -56,6 +63,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :status, :points, tasks_attributes: [:name, :status, :due_date, :priority, :user, :category_id])
+    params.require(:project).permit(:name, :status, :points, tasks_attributes: [:name, :status, :due_date, :priority, :user, category_attributes: :name])
   end
 end

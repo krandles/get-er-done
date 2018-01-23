@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'dashboard#index'
   resources :categories
   resources :tasks
   resources :projects

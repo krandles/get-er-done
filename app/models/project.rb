@@ -6,4 +6,5 @@ class Project < ApplicationRecord
   validates :name, presence:true
   validates :name, uniqueness:true
   validates :points, numericality:{greater_than:0}
+
 end
