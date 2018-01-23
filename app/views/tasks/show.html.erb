@@ -1,0 +1,12 @@
+<h2>Task Name: <%= @task.name %></h2>
+<h3>Task Due Date: <%= @task.due_date.strftime("%D") %></h3>
+<h3>Task Status: <%=@task.status ? "Complete" : "Incomplete" %></h3>
+<h3>Task Priority: <%= @task.priority %></h3>
+<h3>Task Project: <%= link_to @task.project.name, @task.project %></h3>
+<h3>Task Category: <%= link_to @task.category.name, @task.category %></h3>
+<br>
+<h4>Task created by: <%= @task.user.user_name %></h4>
+<br>
+<%= button_to "Edit Task", edit_task_path(@task.id), method: :get %>
+<br>
+<%= button_to "Delete Task", @task, method: :delete %>

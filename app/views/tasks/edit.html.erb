@@ -1,0 +1,14 @@
+<h2>Edit Task Form</h2>
+<%= form_for @task do |f| %>
+  <%= f.label :name, "Task Name" %>
+  <%= f.text_field :name %><br>
+  <%= f.label :due_date,"Due Date" %>
+  <%= f.date_select :due_date %><br>
+  <%= f.label :status,"Status" %>
+  <%= f.check_box :status %><br>
+  <%= f.label :project_id, "Project" %>
+  <%= f.collection_select :project_id, @projects, :id, :name %><br>
+  <%= f.label :category_id, "Category" %>
+  <%= f.collection_select :category_id, @categories, :id, :name %><br>
+  <%= f.submit %>
+<% end %>
