@@ -13,6 +13,7 @@
     <div class="col-sm-3">Category</div>
   </div>
   <%= f.fields_for :tasks do |task| %>
+<<<<<<< HEAD
     <div class="row">
       <div class="col-sm-2"><%= task.text_field :name %></div>
       <div class="col-sm-1"><%= task.number_field :priority, in:1..5 %></div>
@@ -26,6 +27,23 @@
         </datalist>
       <% end %>
     </div>
+=======
+    <%= task.label :name %>
+    <%= task.text_field :name %>
+    <%= task.label :priority %>
+    <%= task.number_field :priority, in:1..5 %>
+    <%= task.label :due_date %>
+    <%= task.date_select :due_date %>
+    <%= task.fields_for :category do |c| %>
+      <%= c.label :name, "Category" %>
+      <%= c.text_field :name, list: "categories_autocomplete" %><br>
+      <datalist id="categories_autocomplete">
+        <% Category.all.each do |category| %>
+          <option value="<%= category.name %>">
+        <% end %>
+      </datalist>
+    <% end %>
+>>>>>>> Nemanja
   <% end %>
 
   <%= f.submit %>
