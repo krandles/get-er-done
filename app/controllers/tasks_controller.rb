@@ -34,6 +34,9 @@ class TasksController < ApplicationController
   def update
     @task.assign_attributes(task_params)
     if @task.valid?
+      if @task.status
+        @task.complete_date = Time.now
+      end
       @task.save
       redirect_to @task
     else
