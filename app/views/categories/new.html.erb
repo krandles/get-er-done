@@ -1,0 +1,7 @@
+<h2>New Category Form</h2>
+<%= render 'errors/error_messages' %>
+<%= form_for @category do |f| %>
+  <%= f.label :name, "Category Name" %>
+  <%= f.text_field :name %>
+  <%= f.submit %>
+<% end %>

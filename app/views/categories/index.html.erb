@@ -1,0 +1,8 @@
+<h2>All Categories</h2>
+<ul>
+  <% @categories.each do |category| %>
+    <li><%= link_to category.name, category %></li>
+  <% end %>
+</ul>
+<br>
+<%= button_to "Add Category", new_category_path, method: :get %>
