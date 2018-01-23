@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
   def create
     # byebug
     @project = Project.new(project_params)
+    # @project.destroy_blank_tasks(project_params)
     @project.tasks.each_with_index do |t, index|
       t.user = current_user
       t.category = Category.find_or_create_by(name: params[:project][:tasks_attributes]["#{index}"][:category_attributes][:name])

@@ -7,42 +7,62 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <style>
+    .footer {
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        background-color: rgb(248,248,248);
+        color: grey;
+        text-align: center;
+        border-top: 1px solid darkgray;
+    }
+  </style>
   </head>
 
   <body>
     <nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">GitErDun</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="/projects">Projects</a></li>
-      <li><a href="/tasks">Tasks</a></li>
-      <li><a href="/categories">Categories</a></li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li>
-        <% if logged_in? %>
-          <%= link_to current_user.first_name, current_user %>
-        <% else %>
-          <%= link_to "Sign Up", signup_path %>
-        <% end %>
-      </li>
-      <li>
-        <% if logged_in? %>
-          <%= link_to "Log Out", logout_path, method: :post %>
-        <% else %>
-          <%= link_to "Log In", login_path %>
-        <% end %>
-      </li>
-    </ul>
-  </div>
-</nav>
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">GitErDun</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="/projects">Projects</a></li>
+          <li><a href="/tasks">Tasks</a></li>
+          <li><a href="/categories">Categories</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <% if logged_in? %>
+              <%= link_to current_user.first_name, current_user %>
+            <% else %>
+              <%= link_to "Sign Up", signup_path %>
+            <% end %>
+          </li>
+          <li>
+            <% if logged_in? %>
+              <%= link_to "Log Out", logout_path, method: :post %>
+            <% else %>
+              <%= link_to "Log In", login_path %>
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
     <div class="container">
       <div class="jumbotron">
         <%= yield %>
       </div>
     </div>
+    <footer class="page-footer center-on-small-only">
+      <div class="footer">
+        <div class="container-fluid">	
+          &#169; 2018 krandrakula, this site is in no way affiliated with Larry the Cable Guy
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

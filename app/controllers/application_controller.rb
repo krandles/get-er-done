@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
   def login_required
-    return head(:forbidden) unless session.include? :user_id
+    redirect_to login_path unless session.include? :user_id
   end
 
   def logged_in?
