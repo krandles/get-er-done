@@ -11,18 +11,22 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
+    @project.tasks.build()
+    @categories = Category.all
   end
 
   def create
     @project = Project.new(project_params)
-
+    @project.tasks.each do |t|
+      t.user = current_user
+    end
     if @project.valid?
       @project.status = false
       @project.save
       redirect_to @project
     else
       flash[:errors] = @project.errors.full_messages
-      render :new
+      redirect_to new_project_path
     end
   end
 
@@ -36,7 +40,7 @@ class ProjectsController < ApplicationController
       redirect_to @project
     else
       flash[:errors] = @project.errors.full_messages
-      render :edit
+      redirect_to edit_project_path(@project.id)
     end
   end
 
@@ -52,6 +56,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :status, :points)
+    params.require(:project).permit(:name, :status, :points, tasks_attributes: [:name, :status, :due_date, :priority, :user, :category_id])
   end
 end
