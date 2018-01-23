@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: [:show, :edit, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def show
@@ -21,6 +21,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    # byebug
     @project = Project.new(project_params)
     @project.tasks.each_with_index do |t, index|
       t.user = current_user

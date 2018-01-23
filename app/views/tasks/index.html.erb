@@ -1,7 +1,7 @@
 <h2>Task List</h2>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.name, task %></li>
+    <li><%= link_to task.name, task %> | <%= task.status ? "Complete" : "Incomplete" %> | (Priority <%= task.priority %>)</li>
   <% end %>
 </ul>
 <br>

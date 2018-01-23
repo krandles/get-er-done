@@ -1,5 +1,9 @@
 <h2>Project Name: <%= @project.name %></h2>
+
 <h3>Status: <%= @project.status ? "Complete" : "Incomplete" %></h3>
+<% if @project.status %>
+  <h3>Date Completed: <%= Time.now.strftime("%D") %></h3>
+<% end %>
 <h3>Points for Completion <%= @project.points %></h3>
 <br>
 <h3>Project Tasks</h3>

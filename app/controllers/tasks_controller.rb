@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :find_task, only:[:show,:edit,:update,:destroy]
   def index
-    @tasks = Task.all
+    @tasks = current_user.tasks
+    @tasks = @tasks.sort_by {|task| task.priority}
   end
 
   def show
