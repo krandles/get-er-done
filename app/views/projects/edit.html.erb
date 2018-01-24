@@ -1,10 +1,10 @@
-<h2>New Project Form</h2>
+<h2>Edit Project</h2>
 <%= form_for @project do |f| %>
   <%= f.label :name, "Project Name" %>
-  <%= f.text_field :name %><br>
+  <%= f.text_field :name, class: 'form-control' %><br>
   <%= f.label :status %>
-  <%= f.check_box :status %><br>
+  <%= f.check_box :status, class: 'form-control' %><br>
   <%= f.label :points %>
-  <%= f.number_field :points, in:1..20 %><br>
-  <%= f.submit %>
+  <%= f.number_field :points, in:1..20, class: 'form-control' %><br>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
