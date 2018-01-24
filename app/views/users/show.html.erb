@@ -4,7 +4,7 @@
   </div>
   <div class="col-sm-6 text-right">
     <h3>Level <%= @user.level %></h3>
-    <h4><%= @user.experience %> / <%= @user.next_level %></h4>
+    <h4>Exp: <%= @user.experience %> / <%= @user.next_level %></h4>
   </div>
 </div>
 
@@ -17,6 +17,3 @@
 <br>
 <h4>Number of Tasks: <%= @user.tasks.select {|task| !task.status }.count %></h4>
 <h4>Number of Tasks Copleted: <%= @user.tasks.select {|task| task.status }.count %></h4>
-<br>
-<h4>Level: <%= @user.level %></h4>
-<h4>Experience: <%= @user.experience %></h4>
