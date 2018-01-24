@@ -1,18 +1,33 @@
-<h2>Edit Task Form</h2>
+<h2>Edit Task</h2>
 <div class="row">
   <div class='alert-danger col-sm-3'><%= render 'errors/error_messages' %></div>
 </div>
 <%= form_for @task do |f| %>
-  <%= f.label :name, "Task Name" %>
-  <%= f.text_field :name, class: 'form-control' %><br>
-  <%= f.label :due_date,"Due Date" %>
-  <%= f.date_field :due_date %><br>
-  <%= f.label :status,"Status" %>
-  <%= f.check_box :status, class: 'form-control' %><br>
-  <%= f.label :priority,"Priority" %>
-  <%= f.number_field :priority, in:1..5, class: 'form-control' %><br>
-  <%= f.label :points, "Points" %>
-  <%= f.number_field :points, in:0..10, class: 'form-control' %><br>
+  <div class="row">
+    <div class="col-sm-8">
+      <%= f.label :name, "Name" %>
+      <%= f.text_field :name, class: 'form-control' %><br>
+    </div>
+    <div class="col-sm-4">
+      <%= f.label :due_date,"Due Date" %>
+      <%= f.date_field :due_date, class: 'form-control' %>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-2 checkbox">
+      <%= f.label :status,"Status" %>
+      <%= f.check_box :status, class: 'form-control' %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :priority,"Priority" %>
+      <%= f.number_field :priority, in:1..5, class: 'form-control' %>
+    </div>
+    <div class="col-sm-2">
+      <%= f.label :points, "Points" %>
+      <%= f.number_field :points, in:0..10, class: 'form-control' %>
+    </div>
+  </div>
   <%= f.label :project_id, "Project" %>
   <%= f.collection_select :project_id, @projects, :id, :name, class: 'form-control' %><br>
   <!--<%= f.fields_for :category do |c| %>
@@ -25,5 +40,5 @@
       <% end %> -->
   <%= f.label :category_id, "Category" %>
   <%= f.collection_select :category_id, @categories, :id, :name, html: { :class => 'form-control' } %><br>
-  <%= f.submit %>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

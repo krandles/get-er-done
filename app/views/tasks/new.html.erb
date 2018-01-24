@@ -1,26 +1,39 @@
-<h2>New Task Form</h2>
+<h2>New Task</h2>
 <%= render 'errors/error_messages' %>
 <%= form_for @task do |f| %>
-  <%= f.label :name, "Task Name" %>
-  <%= f.text_field :name %><br>
-  <%= f.label :due_date,"Due Date" %>
-  <%= f.date_select :due_date %><br>
-  <%= f.label :priority,"Priority" %>
-  <%= f.number_field :priority, in: 1..5 %><br>
-  <%= f.label :points,"Points" %>
-  <%= f.number_field :points, in: 0..10 %><br>
-  <%= f.label :project_id, "Project" %>
-  <%= f.collection_select :project_id, current_user.projects, :id, :name %><br>
-  <br>
-  <%= f.label :category_id, "Category" %>
-  <%= f.fields_for :category do |c| %>
-    <div><%= c.text_field :name, list: "categories_autocomplete" %></div>
-    <datalist id="categories_autocomplete">
-      <% @categories.each do |category| %>
-        <option value="<%= category.name %>">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.label :name, "Task Name" %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-sm-3">
+      <%= f.label :priority,"Priority" %>
+      <%= f.number_field :priority, in: 1..5, class: 'form-control' %><br>
+    </div>
+    <div class="col-sm-3">
+      <%= f.label :points,"Points" %>
+      <%= f.number_field :points, in: 0..10, class: 'form-control' %><br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= f.label :due_date, "Due Date" %>
+      <%= f.date_field :due_date, class: 'form-control' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.label :project_id, "Project" %>
+      <%= f.collection_select :project_id, current_user.projects, :id, :name, class: 'form-control' %><br>
+    </div>
+    <div class="col-sm-4">
+      <%= f.label :category_id, "Category" %>
+      <%= f.fields_for :category do |c| %>
+        <%= c.text_field :name, list: "categories_autocomplete" %></div>
+        <datalist id="categories_autocomplete">
+          <% @categories.each do |category| %>
+            <option value="<%= category.name %>">
+          <% end %>
+        </datalist>
       <% end %>
-    </datalist>
-  <% end %>
-  <br>
+  </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
