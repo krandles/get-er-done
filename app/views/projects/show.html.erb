@@ -12,7 +12,7 @@
 <% end %>
 <h3>Points for Completion <%= @project.points %></h3>
 <br>
-<h3>Project Tasks</h3>
+<h3>Project Tasks</h3> 
 <ul>
   <% @project.tasks.each do |task| %>
     <li><%= link_to task.name, task %></li>

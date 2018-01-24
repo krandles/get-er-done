@@ -21,7 +21,6 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    # byebug
     @project = Project.new(project_params)
     # @project.destroy_blank_tasks(project_params)
     @project.tasks.each_with_index do |t, index|

@@ -6,24 +6,17 @@
   <%= f.label :points %>
   <%= f.number_field :points, in:1..20, class: 'form-control' %><br>
   <%= f.label :tasks %>
-  <div class="row">
+  <div class="row"> 
     <div class="col-sm-3 text-center">Name</div>
     <div class="col-sm-1 text-center">Priority</div>
     <div class="col-sm-3 text-center">Due Date</div>
     <div class="col-sm-3 text-center">Category</div>
   </div>
   <%= f.fields_for :tasks do |task| %>
-<<<<<<< HEAD
     <div class="form-group row">
       <div class="col-sm-3 text-center"><%= task.text_field :name, class: 'form-control' %></div>
       <div class="col-sm-1 text-center"><%= task.number_field :priority, in:1..5, class: 'form-control' %></div>
-      <div class="col-sm-3 text-center"><%= task.date_select :due_date, class: 'form-control' %></div>
-=======
-    <div class="row">
-      <div class="col-sm-2"><%= task.text_field :name %></div>
-      <div class="col-sm-1"><%= task.number_field :priority, in:1..5 %></div>
-      <div class="col-sm-3"><%= task.date_select :due_date %></div>
->>>>>>> kevin
+      <div class="col-sm-3 text-center"><%= task.date_select :due_date, class: 'form-control', type: 'date' %></div>
       <%= task.fields_for :category do |c| %>
         <div class="col-sm-3 text-center"><%= c.text_field :name, list: "categories_autocomplete", class: 'form-control' %></div>
         <datalist id="categories_autocomplete">
