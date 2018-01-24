@@ -12,4 +12,19 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery3
+//= require jquery_ujs
 //= require_tree .
+
+// $(document).ready(function() {
+//   // -----------------------------------------------------------------------
+//   $.each($('#navbar').find('li'), function() {
+//       $(this).toggleClass('active', 
+//           window.location.pathname.indexOf($(this).find('a').attr('href')) > -1);
+//   }); 
+//   // -----------------------------------------------------------------------
+// });
+$( '.navbar-nav a' ).on( 'click', function () {
+	$( '.navbar-nav' ).find( 'li.active' ).removeClass( 'active' );
+	$( this ).parent( 'li' ).addClass( 'active' );
+});
