@@ -40,7 +40,7 @@ class TasksController < ApplicationController
         @task.complete_date = Time.now
         exp = current_user.experience + @task.points
         current_user.update_attribute(:experience, exp)
-        @task.points = 0
+        @task.update_attribute(:points, 0)
         @task.save
         if current_user.next_level?
           current_user.level_up
