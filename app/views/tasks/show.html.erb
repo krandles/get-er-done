@@ -10,6 +10,7 @@
 <br>
 <h4>Task created by: <%= @task.user.user_name %></h4>
 <br>
-<%= button_to "Edit Task", edit_task_path(@task.id), method: :get %>
-<br>
-<%= button_to "Delete Task", @task, method: :delete %>
+<div class="btn-group-vertical">
+  <%= link_to "Edit Task", edit_task_path(@task.id), method: :get, class: 'btn btn-primary' %>
+  <%= link_to "Delete Task", @task, method: :delete, class: 'btn btn-primary', data: {confirm: "Are you sure?"} %>
+</div>

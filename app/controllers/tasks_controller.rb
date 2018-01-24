@@ -12,6 +12,7 @@ class TasksController < ApplicationController
     @task = Task.new
     @projects = Project.all
     @categories = Category.all
+    @task.build_category
   end
 
   def create
@@ -54,7 +55,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :due_date, :priority, :status, :project_id, :category_id, :user_id)
+    params.require(:task).permit(:name, :due_date, :priority, :status, :project_id, :category_id, :user_id, category_attributes: :name)
   end
 
   def find_task

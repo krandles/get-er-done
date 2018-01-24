@@ -9,7 +9,16 @@
   <%= f.number_field :priority, in:1..5 %><br>
   <%= f.label :project_id, "Project" %>
   <%= f.collection_select :project_id, current_user.projects, :id, :name %><br>
+  <br>
   <%= f.label :category_id, "Category" %>
-  <%= f.collection_select :category_id, @categories, :id, :name %><br>
-  <%= f.submit %>
+  <%= f.fields_for :category do |c| %>
+    <div><%= c.text_field :name, list: "categories_autocomplete" %></div>
+    <datalist id="categories_autocomplete">
+      <% @categories.each do |category| %>
+        <option value="<%= category.name %>">
+      <% end %>
+    </datalist>
+  <% end %>
+  <br>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
