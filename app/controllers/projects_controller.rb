@@ -44,7 +44,12 @@ class ProjectsController < ApplicationController
   def update
     @project.assign_attributes(project_params)
     if @project.valid?
-      @project.save
+      if @project.status
+        exp = current_user.experience + @project.points
+        @project.points = 0
+        @project.save
+        current_user.update_attribute(:experience, exp)
+      end
       redirect_to @project
     else
       flash[:errors] = @project.errors.full_messages
