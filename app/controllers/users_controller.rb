@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.level = 1
       @user.experience = 0
+      @user.next_level = 5
       @user.save
       session[:user_id] = @user.id
       redirect_to @user
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :next_level, :experience, :level)
   end
 
 end

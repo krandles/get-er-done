@@ -6,7 +6,9 @@
   <%= f.label :due_date,"Due Date" %>
   <%= f.date_select :due_date %><br>
   <%= f.label :priority,"Priority" %>
-  <%= f.number_field :priority, in:1..5 %><br>
+  <%= f.number_field :priority, in: 1..5 %><br>
+  <%= f.label :points,"Points" %>
+  <%= f.number_field :points, in: 0..10 %><br>
   <%= f.label :project_id, "Project" %>
   <%= f.collection_select :project_id, current_user.projects, :id, :name %><br>
   <br>

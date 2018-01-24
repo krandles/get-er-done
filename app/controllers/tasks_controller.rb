@@ -38,6 +38,14 @@ class TasksController < ApplicationController
     if @task.valid?
       if @task.status
         @task.complete_date = Time.now
+        exp = current_user.experience + @task.points
+        current_user.update_attribute(:experience, exp)
+        @task.points = 0
+        @task.save
+        if current_user.next_level?
+          current_user.level_up
+          current_user.save
+        end
       end
       @task.save
       redirect_to @task
@@ -55,7 +63,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :due_date, :priority, :status, :project_id, :category_id, :user_id, category_attributes: :name)
+    params.require(:task).permit(:name, :due_date, :priority, :status, :project_id, :category_id, :user_id, :points, category_attributes: :name, user_attributes: [])
   end
 
   def find_task

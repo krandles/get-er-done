@@ -5,8 +5,9 @@ class Task < ApplicationRecord
 
   accepts_nested_attributes_for :category
 
-  validates :name, :due_date, presence: true
-  validates :priority, numericality: {greater_than:0}
+  validates :name, :due_date, :points, presence: true
+  validates :points, inclusion: { in: 0..10 }
+  validates :priority, inclusion: { in: 1..5 }
 
   def category_name=(name)
     self.category = Category.find_or_create_by(name: name)
