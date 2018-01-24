@@ -7,4 +7,6 @@
 <br>
 <h4>Number of Tasks: <%= @user.tasks.select {|task| !task.status }.count %></h4>
 <h4>Number of Tasks Copleted: <%= @user.tasks.select {|task| task.status }.count %></h4>
+<br>
+<h4>Level: <%= @user.level %></h4>
 <h4>Experience: <%= @user.experience %></h4>

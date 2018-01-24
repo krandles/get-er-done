@@ -2,6 +2,6 @@
 <%= render 'errors/error_messages' %>
 <%= form_for @category do |f| %>
   <%= f.label :name, "Category Name" %>
-  <%= f.text_field :name %>
-  <%= f.submit %>
+  <%= f.text_field :name %><br><br>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>
