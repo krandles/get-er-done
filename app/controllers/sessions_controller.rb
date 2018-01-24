@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
     else
       flash.now.alert = "Invalid username or password"
       @user = User.new
-      render :new
+      redirect_to new_user_path
     end
   end
 
