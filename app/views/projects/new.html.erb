@@ -3,24 +3,30 @@
   <div class='alert-danger col-sm-3'><%= render 'errors/error_messages' %></div>
 </div>
 <%= form_for @project do |f| %>
-  <%= f.label :name, "Project Name" %>
-  <%= f.text_field :name, class: 'form-control' %><br>
-  <%= f.label :points %>
-  <%= f.number_field :points, in:1..20, class: 'form-control' %><br>
-  <%= f.label :tasks %>
   <div class="row">
-    <div class="col-sm-3 text-center">Name</div>
+    <div class="col-sm-8">
+    <%= f.label :name, "Project Name" %>
+    <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.label :points %>
+      <%= f.number_field :points, in:1..20, class: 'form-control' %>
+    </div>
+  </div>  
+  <%= f.label :tasks %>
+  <div class="row"> 
+    <div class="col-sm-4 text-center">Name</div>
     <div class="col-sm-1 text-center">Priority</div>
     <div class="col-sm-1 text-center">Points</div>
-    <div class="col-sm-4 text-center">Due Date</div>
+    <div class="col-sm-3 text-center">Due Date</div>
     <div class="col-sm-3 text-center">Category</div>
   </div>
   <%= f.fields_for :tasks do |task| %>
     <div class="form-group row">
-      <div class="col-sm-3 text-center"><%= task.text_field :name, class: 'form-control' %></div>
+      <div class="col-sm-4 text-center"><%= task.text_field :name, class: 'form-control' %></div>
       <div class="col-sm-1 text-center"><%= task.number_field :priority, in:1..5, class: 'form-control' %></div>
       <div class="col-sm-1 text-center"><%= task.number_field :points, in:1..10, class: 'form-control' %></div>
-      <div class="col-sm-4 text-center"><%= task.date_field :due_date, class: 'form-control', type: 'date' %></div>
+      <div class="col-sm-3 text-center"><%= task.date_field :due_date, class: 'form-control', type: 'date' %></div>
       <%= task.fields_for :category do |c| %>
         <div class="col-sm-3 text-center"><%= c.text_field :name, list: "categories_autocomplete", class: 'form-control' %></div>
         <datalist id="categories_autocomplete">
