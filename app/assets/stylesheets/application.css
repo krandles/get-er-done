@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(230,243,255);
+  color: grey;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.navbar {
+  background-color: rgb(230,243,255);
+}
