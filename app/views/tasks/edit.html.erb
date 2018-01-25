@@ -16,12 +16,12 @@
   </div>
   
   <div class="row">
-    <div class="col-sm-2 checkbox">
-      <%= f.label :complete,"complete" %>
+    <div class="col-sm-2">
+      <%= f.label :complete, "Complete" %>
       <%= f.check_box :complete, class: 'form-control' %>
     </div>
     <div class="col-sm-2">
-      <%= f.label :priority,"Priority" %>
+      <%= f.label :priority, "Priority" %>
       <%= f.number_field :priority, in:1..5, class: 'form-control' %>
     </div>
     <div class="col-sm-2">
