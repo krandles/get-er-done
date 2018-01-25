@@ -17,4 +17,12 @@ class Task < ApplicationRecord
     self.category.name
   end
 
+  def self.on_time
+    self.all.select {|task| task.complete && task.due_date >= task.complete_date}
+  end
+
+  def self.overdue
+    self.all.select {|task| task.complete && task.due_date < task.complete_date}
+  end
+
 end
