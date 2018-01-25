@@ -18,6 +18,7 @@ class TasksController < ApplicationController
   def create
     @task = Task.new(task_params)
     @task.user = User.find(session[:user_id])
+    @task.category = Category.find_or_create_by(name: params[:task][:category_attributes][:name])
     if @task.valid?
       @task.status = false
       @task.save
