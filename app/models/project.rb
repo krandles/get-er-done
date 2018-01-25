@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   accepts_nested_attributes_for :tasks, allow_destroy: true, :reject_if => lambda { |a| a[:name].blank? }
   validates :name, presence: true
   # validates :name, uniqueness: {scope: :user}
-  validates :points, numericality: { greater_than: 0 }
+  validates :points, inclusion: { in: 0..10 }
 
   # def destroy_blank_tasks(project_params)
   #   if project_params[:tasks_attributes]
