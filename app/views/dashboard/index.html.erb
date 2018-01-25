@@ -53,11 +53,9 @@
     <% end %>
   </div>
   <div class="col-sm-4">
-    <h4>Due Tomorrow</h4>
-    <% @tasks.each do |task| %>
-      <% if task.due_date == Date.tomorrow && !task.complete %>
-        <%= link_to task.name, task %><br>
-      <% end %>
-    <% end %>
+    <h4>Statistics</h4>
+    <ul>
+      <li><%= @completed_tasks.count %> / <%= @tasks.count %> tasks completed</li>
+      <li><%= current_user.completed_projects %> / <%= @projects.count %> projects completed</li>
   </div>
 </div>
