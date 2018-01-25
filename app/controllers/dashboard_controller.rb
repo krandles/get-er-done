@@ -5,6 +5,7 @@ class DashboardController < ApplicationController
       redirect_to login_path
     end
     @tasks = Task.all.select { |t| t.user == current_user }.sort_by(&:priority)
+    @projects = Project.all.select { |p| p.users.include?(current_user) }
   end
 
 end
