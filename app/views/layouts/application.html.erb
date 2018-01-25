@@ -27,7 +27,7 @@
         <ul class="nav navbar-nav navbar-right">
           <li>
             <% if logged_in? %>
-              <%= link_to "Exp: #{current_user.experience}/#{current_user.next_level}", current_user %>
+              <%= link_to "Lvl #{current_user.level} - Exp #{current_user.experience}/#{current_user.next_level}", current_user %>
             <% end %>
           </li>
           <li>
