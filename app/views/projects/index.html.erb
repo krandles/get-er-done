@@ -1,7 +1,7 @@
 <h2>Projects</h2>
 <ul>
   <% @projects.each do |project| %>
-    <li><%= link_to project.name, project %> | <%= project.status ? "Complete" : "Incomplete" %></li>
+    <li><%= link_to project.name, project %> | <%= project.complete ? "Complete" : "Incomplete" %></li>
   <% end %>
 </ul>
 <br>

@@ -3,7 +3,7 @@
   <div class="col-sm-4">
     <h4>Overdue Tasks</h4>
     <% @tasks.each do |task| %>
-      <% if task.due_date < Date.today && !task.status %>
+      <% if task.due_date < Date.today && !task.complete %>
         <%= link_to task.name, task %><br>
       <% end %>
     <% end %>
@@ -11,7 +11,7 @@
   <div class="col-sm-4">
     <h4>Due Today</h4>
     <% @tasks.each do |task| %>
-      <% if task.due_date == Date.today && !task.status %>
+      <% if task.due_date == Date.today && !task.complete %>
         <%= link_to task.name, task %><br>
       <% end %>
     <% end %>
@@ -19,7 +19,7 @@
   <div class="col-sm-4">
     <h4>Due Tomorrow</h4>
     <% @tasks.each do |task| %>
-      <% if task.due_date == Date.tomorrow && !task.status %>
+      <% if task.due_date == Date.tomorrow && !task.complete %>
         <%= link_to task.name, task %><br>
       <% end %>
     <% end %>

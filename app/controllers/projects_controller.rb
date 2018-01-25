@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
       t.category = Category.find_or_create_by(name: params[:project][:tasks_attributes]["#{index}"][:category_attributes][:name])
     end
     if @project.valid?
-      @project.status = false
+      @project.complete = false
       current_user.projects << @project
       @project.save
       redirect_to @project
@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   def update
     @project.assign_attributes(project_params)
     if @project.valid?
-      if @project.status
+      if @project.complete
         exp = current_user.experience + @project.points
         @project.update_attribute(:points, 0)
         @project.save
@@ -73,6 +73,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :status, :points, tasks_attributes: [:name, :status, :due_date, :priority, :user, :points, category_attributes: :name])
+    params.require(:project).permit(:name, :complete, :points, tasks_attributes: [:name, :complete, :due_date, :priority, :user, :points, category_attributes: :name])
   end
 end

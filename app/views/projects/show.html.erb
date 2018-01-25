@@ -3,11 +3,11 @@
     <h2><%= @project.name %></h2>
   </div>
   <div class="col-sm-6 text-right">
-    <h3><%= @project.tasks.select {|t|t.status == true}.count %> / <%= @project.tasks.count %> tasks completed</h3>
+    <h3><%= @project.tasks.select {|t|t.complete == true}.count %> / <%= @project.tasks.count %> tasks completed</h3>
   </div>
 </div>
-<!-- <h3>Status: <%= @project.status ? "Complete" : "Incomplete" %></h3> -->
-<% if @project.status %>
+<!-- <h3>complete: <%= @project.complete ? "Complete" : "Incomplete" %></h3> -->
+<% if @project.complete %>
   <h3>Date Completed: <%= Time.now.strftime("%D") %></h3>
 <% end %>
 <!-- <% if @project.points > 0 %>
@@ -17,7 +17,7 @@
 <h3>Project Tasks</h3>
 <ul>
   <% @project.tasks.sort_by{|task| task.priority}.each do |task| %>
-    <li><%= link_to task.name, task %> | <%= task.status ? "Complete" : "Incomplete" %></li>
+    <li><%= link_to task.name, task %> | <%= task.complete ? "Complete" : "Incomplete" %></li>
   <% end %>
 </ul>
 <br>

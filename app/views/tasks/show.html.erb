@@ -4,12 +4,12 @@
     <h3>Task Due Date: <%= @task.due_date.strftime("%D") %></h3>
   </div>
   <div class="col-sm-6 text-right">
-    <% if @task.status %>
+    <% if @task.complete %>
       <h3>Date Complete: <%= @task.complete_date.strftime("%D") %></h3>
     <% end %>
   </div>
 </div>
-<h3>Task Status: <%=@task.status ? "Complete" : "Incomplete" %></h3>
+<h3>Task complete: <%=@task.complete ? "Complete" : "Incomplete" %></h3>
 <h3>Task Priority: <%= @task.priority %></h3>
 <h3>Task Project: <%= link_to @task.project.name, @task.project %></h3>
 <h3>Task Category: <%= link_to @task.category.name, @task.category %></h3>

@@ -19,7 +19,7 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.user = User.find(session[:user_id])
     if @task.valid?
-      @task.status = false
+      @task.complete = false
       @task.save
       redirect_to @task
     else
@@ -36,7 +36,7 @@ class TasksController < ApplicationController
   def update
     @task.assign_attributes(task_params)
     if @task.valid?
-      if @task.status
+      if @task.complete
         @task.complete_date = Time.now
         exp = current_user.experience + @task.points
         current_user.update_attribute(:experience, exp)
@@ -63,7 +63,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name, :due_date, :priority, :status, :project_id, :category_id, :user_id, :points, category_attributes: :name, user_attributes: [])
+    params.require(:task).permit(:name, :due_date, :priority, :complete, :project_id, :category_id, :user_id, :points, category_attributes: :name, user_attributes: [])
   end
 
   def find_task

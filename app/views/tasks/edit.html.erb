@@ -1,4 +1,5 @@
 <h2>Edit Task</h2>
+<br>
 <div class="row">
   <div class='alert-danger col-sm-3'><%= render 'errors/error_messages' %></div>
 </div>
@@ -16,8 +17,8 @@
   
   <div class="row">
     <div class="col-sm-2 checkbox">
-      <%= f.label :status,"Status" %>
-      <%= f.check_box :status, class: 'form-control' %>
+      <%= f.label :complete,"complete" %>
+      <%= f.check_box :complete, class: 'form-control' %>
     </div>
     <div class="col-sm-2">
       <%= f.label :priority,"Priority" %>
