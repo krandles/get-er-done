@@ -1,7 +1,18 @@
 <h2>Task List</h2>
+<h3>Incomplete Tasks</h3>
 <ul>
   <% @tasks.each do |task| %>
-    <li><%= link_to task.name, task %> | <%= task.complete ? "Complete" : "Incomplete" %> | <%= link_to task.project.name, task.project %> | (Priority <%= task.priority %>)</li>
+    <% if !task.complete %>
+      <li><%= link_to task.name, task %> | <%= link_to task.project.name, task.project %> | (Priority <%= task.priority %>)</li>
+    <% end %>
+  <% end %>
+</ul>
+<h3>Complete Tasks</h3>
+<ul>
+  <% @tasks.each do |task| %>
+    <% if task.complete %>
+      <li><%= link_to task.name, task %> | <%= link_to task.project.name, task.project %> | (Priority <%= task.priority %>)</li>
+    <% end %>
   <% end %>
 </ul>
 <br>

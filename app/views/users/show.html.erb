@@ -12,8 +12,8 @@
 <h4>Username: <%= @user.user_name %></h4>
 <h4>Email: <%= @user.email %></h4>
 <br>
-<h4>Number of Projects: <%= @user.projects.select {|project| !project.complete }.count %></h4>
-<h4>Number of Projects Completed: <%= @user.projects.select {|project| project.complete }.count %></h4>
+<h4>Number of Incomplete Projects: <%= @user.projects.select {|project| !project.complete }.count %></h4>
+<h4>Number of Complete Projects: <%= @user.projects.select {|project| project.complete }.count %></h4>
 <br>
-<h4>Number of Tasks: <%= @user.tasks.select {|task| !task.complete }.count %></h4>
-<h4>Number of Tasks Copleted: <%= @user.tasks.select {|task| task.complete }.count %></h4>
+<h4>Number of Incomplete Tasks: <%= @user.tasks.select {|task| !task.complete }.count %></h4>
+<h4>Number of Complete Tasks: <%= @user.tasks.select {|task| task.complete }.count %></h4>
