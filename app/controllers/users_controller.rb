@@ -42,8 +42,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # params[:user].delete(:password) if params[:user][:password].blank?
-    # params[:user].delete(:password_confirmation) if params[:user][:password].blank?
+    if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+      params[:user].delete(:password)
+      params[:user].delete(:password_confirmation)
+      @user.skip_password_validation = true
+    end
     @user.update_attributes(user_params)
     if @user.valid?
       @user.save
