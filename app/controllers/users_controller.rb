@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
-
+  # before_action :skip_password_attribute, only: :update
   before_action :user_params, only: [:create, :update]
 
   def show
@@ -42,8 +42,8 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    params[:user].delete(:password) if params[:user][:password].blank?
-    params[:user].delete(:password_confirmation) if params[:user][:password].blank?
+    # params[:user].delete(:password) if params[:user][:password].blank?
+    # params[:user].delete(:password_confirmation) if params[:user][:password].blank?
     @user.update_attributes(user_params)
     if @user.valid?
       @user.save
@@ -65,5 +65,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :next_level, :experience, :level, :admin)
   end
+
+  # def skip_password_attribute
+  #   if params[:user][:password].blank? && params[:user][:password_confirmation].blank?
+  #     params.except(:password, :password_validation)
+  #   end
+  # end
 
 end

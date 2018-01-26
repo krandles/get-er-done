@@ -8,6 +8,7 @@ class Task < ApplicationRecord
   validates :name, :due_date, :points, presence: true
   validates :points, inclusion: { in: 0..10 }
   validates :priority, inclusion: { in: 1..5 }
+  validates :name, length: { in: 1..100 }
 
   def category_name=(name)
     self.category = Category.find_or_create_by(name: name)

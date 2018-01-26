@@ -5,6 +5,8 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :user_name, :email, uniqueness: true
+  validates :first_name, :last_name, length: { in: 2..32 }
+  validates :password, :user_name, length: { in: 6..32 }
   validates :user_name, :email, :first_name, :last_name, :password, :password_confirmation, presence: true
 
   def next_level?
