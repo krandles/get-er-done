@@ -19,11 +19,10 @@
   bottom: 0;
   width: 100%;
   color: grey;
+  background-color: rgb(255, 255, 255);
   text-align: center;
   box-sizing: border-box;
 }
-
-
 
 .navbar {
   background-color: #B6BED1;
@@ -33,14 +32,23 @@
   color: #45647B;
 }
 
-body {
-  padding-top: 80px;
-}
-
 label {
   font-size: 16px;
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   line-height: 1.42857;
   color: #45647B;
   font-weight: 400;
+}
+
+.jumbotron {
+  background-color: rgba(238,238,238)
+}
+
+body {
+  background: url(background1.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  padding-top: 80px;
 }

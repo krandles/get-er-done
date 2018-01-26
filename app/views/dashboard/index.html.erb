@@ -1,4 +1,12 @@
-<h3>Urgent Tasks</h3>
+<div class="row">
+  <div class="col-sm-7">
+    <h3>Overview</h3>
+  </div>
+  <div class="col-sm-5 text-right">
+    <h4><%= Time.now.strftime('%A, %B %e, %Y ') %></h4>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-sm-4">
     <h4>Overdue Tasks</h4>
@@ -17,11 +25,37 @@
     <% end %>
   </div>
   <div class="col-sm-4">
-    <h4>Due Tomorrow</h4>
+    <h4>Projects</h4>
+    <% @projects.each do |project| %>
+      <% if !project.complete %>
+        <%= link_to project.name, project %><br>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<h3>History</h3>
+<div class="row">
+  <div class="col-sm-4">
+    <h4>Recent Tasks</h4>
     <% @tasks.each do |task| %>
-      <% if task.due_date == Date.tomorrow && !task.complete %>
+      <% if task.complete && task.complete_date >= Date.today - 7 %>
         <%= link_to task.name, task %><br>
       <% end %>
     <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h4>Completed Projects</h4>
+    <% @projects.each do |project| %>
+      <% if project.complete %>
+        <%= link_to project.name, project %><br>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="col-sm-4">
+    <h4>Statistics</h4>
+    <ul>
+      <li><%= @completed_tasks.count %> / <%= @tasks.count %> tasks completed</li>
+      <li><%= current_user.completed_projects %> / <%= @projects.count %> projects completed</li>
   </div>
 </div>

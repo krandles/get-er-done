@@ -19,5 +19,4 @@ class ApplicationController < ActionController::Base
       false
     end
   end
-
 end
