@@ -4,7 +4,9 @@ class UsersController < ApplicationController
   before_action :user_params, only: [:create, :update]
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
+
+    redirect_to '/404' if @user.blank?
   end
 
   def index
@@ -34,6 +36,8 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+
+    redirect_to '/404' if @user.blank?
   end
 
   def update
@@ -59,7 +63,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :next_level, :experience, :level)
+    params.require(:user).permit(:first_name, :last_name, :user_name, :email, :password, :password_confirmation, :next_level, :experience, :level, :admin)
   end
 
 end

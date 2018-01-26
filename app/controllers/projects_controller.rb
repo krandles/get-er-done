@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    redirect_to '/404' if @project.blank?
   end
 
   def new
@@ -39,6 +40,7 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    redirect_to '/404' if @project.blank?
   end
 
   def update

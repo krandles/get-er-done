@@ -6,6 +6,7 @@ class TasksController < ApplicationController
   end
 
   def show
+    redirect_to '/404' if @task.blank?
   end
 
   def new
@@ -30,8 +31,11 @@ class TasksController < ApplicationController
   end
 
   def edit
+    redirect_to '/404' if @task.blank?
+
     @projects = Project.all
     @categories = Category.all
+
   end
 
   def update

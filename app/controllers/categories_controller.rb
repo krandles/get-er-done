@@ -5,7 +5,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-
+    redirect_to '/404' if @category.blank?
   end
 
   def new
@@ -24,6 +24,7 @@ class CategoriesController < ApplicationController
   end
 
   def edit
+    redirect_to '/404' if @category.blank?
   end
 
   def update
