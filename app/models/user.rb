@@ -20,7 +20,7 @@ class User < ApplicationRecord
       if self.next_level < 50
         n_lvl = self.next_level *= 1.5
         self.update_attribute(:next_level, n_lvl)
-      elsif self.next_level >= 50 
+      elsif self.next_level >= 50
         n_lvl = self.next_level *= 1.2
         self.update_attribute(:next_level, n_lvl)
       end
@@ -30,5 +30,13 @@ class User < ApplicationRecord
   def add_experience(points)
     self.experience += points
     self.save
+  end
+
+  def completed_projects
+    self.projects.select {|project| project.complete}.count
+  end
+
+  def incompleted_projects
+    self.projects.select {|project| !project.complete}.count
   end
 end
