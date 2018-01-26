@@ -2,6 +2,7 @@ class AnalyticsController < ApplicationController
   def index
     @tasks = Task.all
     @users = User.all
+    @admins = User.all.select(&:admin)
     @projects = Project.all
     @categories = Category.all
     @completed_projects = Project.all_completed_projects

@@ -22,7 +22,9 @@ class UsersController < ApplicationController
       @user.experience = 0
       @user.next_level = 5
       @user.save
-      session[:user_id] = @user.id
+      if !current_user
+        session[:user_id] = @user.id
+      end
       redirect_to @user
     else
       flash[:errors] = @user.errors.full_messages
