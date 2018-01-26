@@ -7,7 +7,7 @@ class Project < ApplicationRecord
   validates :points, inclusion: { in: 0..10 }
 
   def self.all_completed_projects
-  self.all.select {|project| project.complete}.count
+    self.all.select {|project| project.complete}.count
   end
 
   def self.all_incompleted_projects

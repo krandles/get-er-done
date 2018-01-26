@@ -4,5 +4,6 @@ class AnalyticsController < ApplicationController
     @users = User.all
     @projects = Project.all
     @categories = Category.all
+    @completed_projects = Project.all_completed_projects
   end
 end

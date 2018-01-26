@@ -29,17 +29,23 @@
       <%= f.number_field :points, in:0..10, class: 'form-control' %>
     </div>
   </div>
-  <%= f.label :project_id, "Project" %>
-  <%= f.collection_select :project_id, @projects, :id, :name, class: 'form-control' %><br>
-  <!--<%= f.fields_for :category do |c| %>
-        <div class="col-sm-3 text-center"><%= c.text_field :name, list: "categories_autocomplete", class: 'form-control' %></div>
-        <datalist id="categories_autocomplete">
-          <% @categories.all.each do |category| %>
-            <option value="<%= category.name %>">
-          <% end %>
-        </datalist>
-      <% end %> -->
-  <%= f.label :category_id, "Category" %>
-  <%= f.collection_select :category_id, @categories, :id, :name, html: { :class => 'form-control' } %><br>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= f.label :project_id, "Project" %>
+      <%= f.collection_select :project_id, @projects, :id, :name, {}, class: 'form-control' %>
+    </div>
+    <!--<%= f.fields_for :category do |c| %>
+          <div class="col-sm-3 text-center"><%= c.text_field :name, list: "categories_autocomplete", class: 'form-control' %></div>
+          <datalist id="categories_autocomplete">
+            <% @categories.all.each do |category| %>
+              <option value="<%= category.name %>">
+            <% end %>
+          </datalist>
+        <% end %> -->
+    <div class="col-sm-6">
+      <%= f.label :category_id, "Category" %>
+      <%= f.collection_select :category_id, @categories, :id, :name, {}, { :class => 'form-control' } %>
+    </div>
+  </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

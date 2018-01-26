@@ -8,12 +8,16 @@
   </div>
 </div>
 
-<h3><%= @user.first_name %> <%= @user.last_name %></h3>
 <h4>Username: <%= @user.user_name %></h4>
 <h4>Email: <%= @user.email %></h4>
-<br>
-<h4>Number of Incomplete Projects: <%= @user.projects.select {|project| !project.complete }.count %></h4>
-<h4>Number of Complete Projects: <%= @user.projects.select {|project| project.complete }.count %></h4>
-<br>
-<h4>Number of Incomplete Tasks: <%= @user.tasks.select {|task| !task.complete }.count %></h4>
-<h4>Number of Complete Tasks: <%= @user.tasks.select {|task| task.complete }.count %></h4>
+<div class="row">
+  <div class="col-sm-6">
+    <h4>Completed Projects: <%= @user.projects.select {|project| project.complete }.count %></h4>
+    <h4>Incomplete Projects: <%= @user.projects.select {|project| !project.complete }.count %></h4>
+  </div>
+  <div class="col-sm-6">
+    <h4>Completed Tasks: <%= @user.tasks.select {|task| task.complete }.count %></h4>
+    <h4>Incomplete Tasks: <%= @user.tasks.select {|task| !task.complete }.count %></h4>
+  </div>
+</div>
+<%= link_to "Edit", edit_user_path(current_user), method: :get, class: 'btn btn-primary' %>
