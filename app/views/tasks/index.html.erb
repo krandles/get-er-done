@@ -1,17 +1,36 @@
 <h2>Task List</h2>
 <h3>Incomplete Tasks</h3>
 <ul>
+  <div class="row">
+    <div class="col-sm-3">Task</div>
+    <div class="col-sm-3">Project</div>
+    <div class="col-sm-3">Priority</div>
+  </div>
+
   <% @tasks.each do |task| %>
     <% if !task.complete %>
-      <li><%= link_to task.name, task %> | <%= link_to task.project.name, task.project %> | (Priority <%= task.priority %>)</li>
+      <div class="row">
+        <div class="col-sm-3"><%= link_to task.name, task %></div>
+        <div class="col-sm-3"><%= link_to task.project.name, task.project %></div>
+        <div class="col-sm-3"><%= task.priority %></div>
+      </div>
     <% end %>
   <% end %>
 </ul>
 <h3>Complete Tasks</h3>
 <ul>
+  <div class="row">
+    <div class="col-sm-3">Task</div>
+    <div class="col-sm-3">Project</div>
+    <div class="col-sm-3">Priority</div>
+  </div>
   <% @tasks.each do |task| %>
     <% if task.complete %>
-      <li><%= link_to task.name, task %> | <%= link_to task.project.name, task.project %> | (Priority <%= task.priority %>)</li>
+    <div class="row">
+      <div class="col-sm-3"><%= link_to task.name, task %></div>
+      <div class="col-sm-3"><%= link_to task.project.name, task.project %></div>
+      <div class="col-sm-3"><%= task.priority %></div>
+    </div>
     <% end %>
   <% end %>
 </ul>

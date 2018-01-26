@@ -32,7 +32,10 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    @user.assign_attributes(user_params)
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password].blank?
+    byebug
+    @user.update_attributes(user_params)
     if @user.valid?
       @user.save
       redirect_to @user

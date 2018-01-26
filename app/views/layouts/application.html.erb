@@ -23,6 +23,9 @@
           <li><a href="/projects">Projects</a></li>
           <li><a href="/tasks">Tasks</a></li>
           <li><a href="/categories">Categories</a></li>
+          <% if current_user && current_user.admin %>
+            <li><a href="/analytics">Analytics</a></li>
+          <% end %>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li>

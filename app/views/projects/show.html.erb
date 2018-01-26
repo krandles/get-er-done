@@ -14,14 +14,16 @@
   <h3>Points for Completion <%= @pts %></h3>
 <% end %> -->
 <br>
-<h3>Project Tasks</h3>
-<ul>
-  <% @project.tasks.sort_by{|task| task.priority}.each do |task| %>
-    <li><%= link_to task.name, task %> | <%= task.complete ? "Complete" : "Incomplete" %></li>
-  <% end %>
-</ul>
-<br>
-<div class="btn-group-vertical">
-  <%= link_to "Edit Project", edit_project_path(@project.id), method: :get, class: 'btn btn-primary' %>
-  <%= link_to "Delete Project", @project, method: :delete, class: 'btn btn-primary', data: {confirm: "Are you sure?"} %>
+<h3>Tasks</h3>
+<div class="row">
+  <ul>
+    <% @project.tasks.sort_by{|task| task.priority}.each do |task| %>
+      <li><div class="col-sm-3"><%= link_to task.name, task %></div><div class="col-sm-3"><%= task.complete ? "Complete" : "Incomplete" %></li>
+    <% end %>
+  </ul>
+  <div class="btn-group-vertical">
+    <%= link_to "Edit Project", edit_project_path(@project.id), method: :get, class: 'btn btn-primary' %>
+    <%= link_to "Delete Project", @project, method: :delete, class: 'btn btn-primary', data: {confirm: "Are you sure?"} %>
+  </div>
 </div>
+
