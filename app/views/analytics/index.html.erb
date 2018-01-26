@@ -18,6 +18,8 @@
     <h5>Tasks</h5>
     <ul>
       <li><%= @tasks.count %> total tasks</li>
+      <li><%= @tasks_on_time.count + @tasks_overdue.count %> completed tasks</li>
+      <li><%= @tasks_percent_on_time %>% completed on time</li>
     </ul>
   </div>
 </div>

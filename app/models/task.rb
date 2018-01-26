@@ -25,4 +25,8 @@ class Task < ApplicationRecord
     self.all.select {|task| task.complete && task.due_date < task.complete_date}
   end
 
+  def self.percent_on_time
+    ((self.on_time.count.to_f / (self.on_time.count.to_f + self.overdue.count.to_f)) * 100).to_i
+  end
+
 end
