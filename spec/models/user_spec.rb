@@ -6,8 +6,8 @@ RSpec.describe User, :type => :model do
       first_name: "Nemanja",
       last_name: "Drakulovic",
       user_name: "Drakula",
-      password: "pass",
-      password_confirmation: "pass",
+      password: "password",
+      password_confirmation: "password",
       email:"nemanja@drakulovic.com"
       )
     }

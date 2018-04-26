@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   has_many :tasks, dependent: :destroy
   accepts_nested_attributes_for :tasks, allow_destroy: true, :reject_if => lambda { |a| a[:name].blank? }
   validates :name, presence: true
-  validates :points, inclusion: { in: 0..10 }
+  validates :points, inclusion: { in: 0..20 }
 
   def self.all_completed_projects
     self.all.select {|project| project.complete}.count
