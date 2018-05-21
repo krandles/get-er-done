@@ -1,24 +1,12 @@
-# README
+# Get 'er Done
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A to-do list/task management application with gamification elements, built using Ruby on Rails. Designed in collaboration with [Nemanja Drakulovic](https://github.com/DrDrakula) at Flatiron School, this was our final project for the Ruby/Rails module of the curriculum. This project uses bcrypt with browser cookies for user authentication and session persistence, and Bootstrap for quick and easy CSS styling.
 
-Things you may want to cover:
+The final product can be seen at <http://geterdone.kevinrandles.com>
 
-* Ruby version
+## Installation
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Fork and clone this repo
+- `bundle install`
+- `rake db:setup`
+- 'rails s'
