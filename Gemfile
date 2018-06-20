@@ -32,7 +32,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'google_visualr', '>= 2.5'
 gem 'jquery-rails'
-
+gem 'concurrent-ruby'
+gem 'rack'
+gem 'sprockets'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
